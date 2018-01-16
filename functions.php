@@ -6,6 +6,7 @@
  *
  * @package master-computerov
  */
+show_admin_bar( false );
 
 if ( ! function_exists( 'master_computerov_setup' ) ) :
 	/**
@@ -33,8 +34,12 @@ if ( ! function_exists( 'master_computerov_setup' ) ) :
 		 * hard-coded <title> tag in the document head, and expect WordPress to
 		 * provide it for us.
 		 */
-		add_theme_support( 'title-tag' );
-
+        add_action('wp_head', function(){ remove_action( 'wp_head', '_wp_render_title_tag', 1 ); }, 0);
+        
+        add_filter('document_title_parts', function( $parts ){
+	       if( isset($parts['site']) ) unset($parts['site']);
+	       return $parts;
+            });
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.
 		 *
@@ -44,7 +49,7 @@ if ( ! function_exists( 'master_computerov_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'master-computerov' ),
+			'main-menu' => esc_html__( 'Primary', 'master-computerov' ),
 		) );
 
 		/*

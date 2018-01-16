@@ -17,7 +17,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.png" type="image/png" />
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+	<title><?php echo wp_get_document_title(); ?></title>
 	<?php wp_head(); ?>
+	
 </head>
 
 <body>
@@ -36,12 +39,22 @@
                 <div class="col-md-3 col-sm-3 col-xs-12 fone"><a class="normal_row" href="tel:+79263828748"> тел. 8 (926) 382-87-48</a></div>
             </div>
         </div>
-        <div class="icon_menu"><i class="fa fa-bars" aria-hidden="true"></i></div>
-        <nav class="menu_nav">
+     <div class="icon_menu">
+           <i class="fa fa-bars" aria-hidden="true"></i>
+      </div>
+        <?php wp_nav_menu( array(
+                            'theme_location'  => '',
+                            'menu'            => 'main-menu', 
+                            'container'       => 'nav', 
+                            'container_class' => 'menu_nav', 
+                            'menu_class'      => 'menu_ul', 
+                        ) ); ?>
+         <!--<nav class="menu_nav">
             <div class="container">
                 <div class="row">
                     <ul class="menu_ul">
-                        <li><a href="http://master-computerov.ru">главная</a></li>
+                      
+                       <li><a href="http://master-computerov.ru">главная</a></li>
                         <li class="remove_link"><a href="computers_repair">Ремонт компьютера</a>
                             <ul class="hidden_menu">
                                 <li><a href="remont_pc_na_domy">ремонт пк на дому</a></li>
@@ -61,5 +74,5 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>-->
     </header>
